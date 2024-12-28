@@ -25,6 +25,9 @@ class DatabaseHelper {
 
   Future<void> _onCreate(Database db, int version) async {
     await db.execute('''
+    CREATE TABLE audio_playlist(
+    playlistId TEXT PRIMARY KEY,
+     )
     ''');
   }
 }

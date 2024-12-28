@@ -8,5 +8,9 @@ class ImageModel {
   DateTime dateCreated;
 
   ImageModel(
-      {required this.name, required this.size, required this.file, required this.path, required this.dateCreated});
+      {required this.name,
+      required this.size,
+      required this.file,
+      required this.path,
+      required this.dateCreated});
 }

@@ -55,6 +55,8 @@ class _HomePageState extends State<HomePage> {
         setState(() {
           images.add(imageModel);
         });
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text('${images.length} have been fetched from storage')));
       }
     } catch (error) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -152,7 +154,7 @@ class _HomePageState extends State<HomePage> {
                             onTap: () {},
                           ),
                           ListTile(
-                            leading: const Icon(Icons.slideshow),
+                            leading: const Icon(Icons.photo_album),
                             title: const Text('Create album'),
                             onTap: () {},
                           )
@@ -214,10 +216,13 @@ class _HomePageState extends State<HomePage> {
           ? const CircularProgressIndicator()
           : Padding(
               padding: const EdgeInsets.all(8.0), child: pages[currentIndex]),
+      floatingActionButton: FloatingActionButton(
+          onPressed: fetchMediaFiles, child: const Icon(Icons.add)),
       bottomNavigationBar: NavigationBar(
-        selectedIndex: currentIndex,
+          selectedIndex: currentIndex,
           indicatorColor: Colors.green.withOpacity(0.5),
-          onDestinationSelected: onItemTapped, destinations: destinations),
+          onDestinationSelected: onItemTapped,
+          destinations: destinations),
     );
   }
 }

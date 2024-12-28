@@ -1,16 +1,20 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
-class ImageContainer extends StatelessWidget {
-  const ImageContainer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
-    return Container(
-      width: width * 0.5,
+Widget imageContainer({required String imagePath,
+  required Function onTap,
+  required Function onLongPress,
+  required double height,
+  required double width}) {
+  return GestureDetector(
+    onTap: () => onTap,
+    onLongPress: () => onLongPress,
+    child: Container(
       height: height * 0.05,
-      decoration: const BoxDecoration(),
-    );
-  }
+      width: width * 0.5,
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+      child: Image(image: FileImage(File(imagePath))),
+    ),
+  );
 }

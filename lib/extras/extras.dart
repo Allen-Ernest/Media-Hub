@@ -27,7 +27,9 @@ class _ExtrasPageState extends State<ExtrasPage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            GFButton(onPressed: () {}, color: Colors.green, text: 'Settings'),
+            GFButton(onPressed: () {
+              Navigator.pushNamed(context, '/settings');
+            }, color: Colors.green, text: 'Settings'),
             GFButton(onPressed: () {}, color: Colors.green, text: 'About')
           ],
         ),
@@ -70,6 +72,14 @@ class _ExtrasPageState extends State<ExtrasPage> {
                     ));
           },
         ),
+        ListTile(
+          leading: const Icon(Icons.delete),
+          title: const Text('Trash'),
+          onTap: (){
+            Navigator.pushNamed(context, '/trash');
+          },
+        )
+
       ],
     );
   }
